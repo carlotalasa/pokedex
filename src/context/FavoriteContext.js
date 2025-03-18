@@ -10,7 +10,7 @@ export const FavoriteProvider = ({ children }) => {
   }, [favorites]);
 
   const toggleFavorite = (id) => {
-    if (favorites.includes(id)) {
+    if (favorites?.includes(id)) {
       setFavorites(favorites.filter((favId) => favId !== id));
     } else {
       setFavorites([...favorites, id]);
