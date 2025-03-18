@@ -94,7 +94,7 @@ const PokemonList = ({ pokemons: propPokemons }) => {
                     type="text"
                     shape="circle"
                     icon={
-                      favorites.includes(pokemon.id) ? (
+                      favorites?.includes(pokemon.id) ? (
                         <HeartFilled style={{ color: '#ff4d4f', fontSize: '18px' }} />
                       ) : (
                         <HeartOutlined style={{ color: '#ff4d4f', fontSize: '18px' }} />
