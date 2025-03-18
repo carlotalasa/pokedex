@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Layout } from 'antd';
+import Navbar from './components/Navbar';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import Details from './pages/Details';
+import FavoritesPage from './pages/FavoritesPage';
+import { FavoriteProvider } from './context/FavoriteContext'; 
+import { PokemonProvider } from './context/PokemonContext';
+
+const { Content } = Layout;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <PokemonProvider>
+      <FavoriteProvider> 
+        <Router>
+          <Layout>
+            <Navbar />
+            <Content style={{ padding: '24px' }}>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/details/:id" element={<Details />} />
+                <Route path="/favorites" element={<FavoritesPage />} />
+              </Routes>
+            </Content>
+          </Layout>
+        </Router>
+      </FavoriteProvider>
+    </PokemonProvider>
   );
 }
 
